@@ -9,6 +9,7 @@ import com.sky.exception.AccountNotFoundException;
 import com.sky.exception.PasswordErrorException;
 import com.sky.mapper.EmployeeMapper;
 import com.sky.service.EmployeeService;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.DigestUtils;
@@ -53,5 +54,16 @@ public class EmployeeServiceImpl implements EmployeeService {
         //3、返回实体对象
         return employee;
     }
-
+    /**
+     * employee save
+     *
+     * @param employeeLoginDTO
+     * @return
+     */
+    public void save(EmployeeLoginDTO employeeLoginDTO) {
+     Employee employee = new Employee();
+     BeanUtils.copyProperties(employeeLoginDTO, employee);
+     employee.setStatus(1);
+     employee.setPassword("123456");
+    }
 }

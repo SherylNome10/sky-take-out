@@ -9,6 +9,7 @@ import com.sky.service.EmployeeService;
 import com.sky.utils.JwtUtil;
 import com.sky.vo.EmployeeLoginVO;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -70,5 +71,15 @@ public class EmployeeController {
     public Result<String> logout() {
         return Result.success();
     }
+     @PostMapping
+    public Result save(@RequestBody EmployeeLoginDTO employeeLoginDTO)
+    {
+        EmployeeService.save(employeeLoginDTO);
+        return null;
+
+
+
+    }
+
 
 }
